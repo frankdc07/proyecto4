@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      %h2 Edit profile
+
+      = simple_form_for @user do |f|
+        = f.input :name
+        = f.input :lastname
+        = f.button :submit, class: 'btn-primary', value: 'Update Profile'
+        = link_to "Cancel", root_path, class: 'btn btn-danger'

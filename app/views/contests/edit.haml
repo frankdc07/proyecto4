@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      %h2 Edit contest
+
+      = simple_form_for @contest do |f|
+        = f.input :title
+        = f.label :url
+        %br
+        .input-group
+          %span.input-group-addon='ec2-52-42-129-57.us-west-2.compute.amazonaws.com:3000/contest/' + @contest.id.to_s + '/'
+          = f.input_field :url, class: 'form-control'
+        %p
+        = f.input :date_ini, as: :date
+        = f.input :date_end, as: :date
+        = f.input :award, as: :text
+        = f.input :banner, as: :file
+        %h3
+          = f.button :submit, class: 'btn-primary', value: 'Save Contest'
+          = link_to "Cancel", :back, class: 'btn btn-danger'

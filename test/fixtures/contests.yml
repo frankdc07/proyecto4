@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  banner: 
+  url: MyString
+  date_ini: 2016-09-04 01:49:54
+  date_end: 2016-09-04 01:49:54
+  award: MyText
+  user: one
+
+two:
+  title: MyString
+  banner: 
+  url: MyString
+  date_ini: 2016-09-04 01:49:54
+  date_end: 2016-09-04 01:49:54
+  award: MyText
+  user: two

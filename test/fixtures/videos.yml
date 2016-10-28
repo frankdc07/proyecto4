@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_upload: 2016-09-04 01:57:57
+  filename: MyString
+  description: MyText
+  status: MyString
+  link_original: 
+  link_converted: 
+  user_name: MyString
+  user_lastname: MyString
+  user: 
+  user_comments: MyText
+  contest: one
+
+two:
+  date_upload: 2016-09-04 01:57:57
+  filename: MyString
+  description: MyText
+  status: MyString
+  link_original: 
+  link_converted: 
+  user_name: MyString
+  user_lastname: MyString
+  user: 
+  user_comments: MyText
+  contest: two

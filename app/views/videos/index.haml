@@ -1,0 +1,67 @@
+- if @contest.url == params[:url]
+  .container
+    %h1.text-center= 'Welcome to the contest "' + @contest.title+ '" !!'
+    %br
+    %p.text-center{ style: 'font-size: 20px'}
+      = image_tag @contest.banner.url, size: '600x300', class: 'img-rounded'
+      %br
+      %br
+      You can upload your videos to participate for this award:
+      %br
+      %strong= @contest.award
+      %br
+      The contest ends on 
+      %strong= @contest.date_end.strftime("%F")
+      Please upload your video and enjoy watching other participant's videos
+  .container
+    .row
+      .col-md-12
+        .pull-right
+          %br
+          = link_to 'Upload new video', '/contest/'+@contest.id.to_s+'/'+@contest.url+'/new', class: 'btn btn-primary'
+    .row
+      %br
+      - @videos.each do |video|
+        .col-md-4.thumb.video-thumb{ 'data-video-id': video.id }
+          /= link_to '/contest/'+@contest.id.to_s+'/'+@contest.url+'/show/'+video.id.to_s, class: 'img-rounded' do             
+          %button#modalbutton.btn-link{ 'data-toggle': "modal", 'data-target': "#mymodal", 'data-filename': video.filename, 'data-vurl': 'http://d1ox08cdj9olo7.cloudfront.net' +video.link_converted.path, 'data-desc': video.description, 'data-name': video.user_name, 'data-lastname': video.user_lastname, 'data-comments':  video.user_comments, 'data-mail': video.user_email }
+            = image_tag video.thumbnail.url(:medium_nr), size: '400x200', class: 'img-thumbnail', 'data-toggle': 'tooltip', 'data-placement': 'top', 'title': video.filename
+      .modal.fade#mymodal{ tabindex: "-1", role: "dialog", 'aria-labelledby': "myLargeModalLabel" }
+        .modal-dialog.modal-lg{ role:"document" }
+          .modal-content
+            .modal-header
+              %button.close{ 'data-dismiss': "modal", 'aria-label': "Close" }
+                %span{ 'aria-hidden': 'true'}
+                  &times;
+              %h4#videoname.modal-title
+                text
+            .modal-body
+              / - if video.all_formats_encoded?
+              %video#my-video.video-js{controls: "", "data-setup": "{}", height: "350", preload: "auto", width: "700"}
+                /temporalmente llama al original
+                %source#videourl{ src: "", type: "video/mp4"}
+                %p.vjs-no-js
+                  To view this video please enable JavaScript, and consider upgrading to a web browser that
+                  %a{:href => "http://videojs.com/html5-video-support/", :target => "_blank"} supports HTML5 video
+              %h4 
+                %b Description
+              %p#desc video.description
+              %h4 
+                %b Comments
+              %p#comments
+                %strong#user
+                  video.user_name  + ' ' + video.user_lastname + ' said'
+                video.user_comments        
+              %h4 
+                %b Contact
+              %p#contact video.user_email
+              / - else
+              /   %p Your video is still being encoded. An e-mail will be send to you with the notification when your video will be published. Thank you. 
+    .row
+      = will_paginate @videos, class: 'apple_pagination'
+- else
+  .container
+    .alert.alert-warning{role: 'alert'}
+      %strong Warning!
+      %br
+      We are so sorry, the URL you are trying is not correct. Please verify it and try again :D

@@ -1,0 +1,28 @@
+.container
+  .row.video-full{ 'data-video-id': @video.id }
+    .col-md-9
+      %h1= @video.filename
+      %p.small
+        = link_to 'Back to videos' ,'/contest/'+@contest.id.to_s+'/'+@contest.url
+
+      - if @video.all_formats_encoded?
+        %video#my-video.video-js{:controls => "", "data-setup" => "{}", :height => "264", :preload => "auto", :width => "600"}
+          /temporalmente llama al original
+          %source{:src => @video.link_converted.url, :type => "video/mp4"}
+          %p.vjs-no-js
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            %a{:href => "http://videojs.com/html5-video-support/", :target => "_blank"} supports HTML5 video
+        %h4 
+          %b Description
+        %p= @video.description
+        %h4 
+          %b Comments
+        %p
+          %strong
+            = @video.user_name  + ' ' + @video.user_lastname + ' said'
+          = @video.user_comments        
+        %h4 
+          %b Contact
+        %p= @video.user_email
+      - else
+        %p Your video is still being encoded. An e-mail will be send to you with the notification when your video will be published. Thank you. 

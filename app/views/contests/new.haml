@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      %h2 Create new contest
+
+      = simple_form_for @contest, html: { multipart: true } do |f|
+        = f.input :title
+        = f.input :date_ini, as: :date
+        = f.input :date_end, as: :date
+        = f.input :award, as: :text
+        = f.input :banner, as: :file
+        = f.button :submit, class: 'btn-primary', value: 'Create Contest'

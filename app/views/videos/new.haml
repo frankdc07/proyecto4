@@ -1,0 +1,13 @@
+.container
+  .row
+    .col-md-6.col-sm-12
+      %h2 Upload new video
+      = simple_form_for @video, url: '/contest/'+params[:contest_id]+'/'+params[:url]+'/save', method: :post, html: { multipart: true } do |f|
+        = f.input :filename
+        = f.input :description, as: :text
+        = f.input :user_name
+        = f.input :user_lastname
+        = f.input :user_email, as: :email
+        = f.input :user_comments, as: :text
+        = f.input :link_original, as: :file
+        = f.button :submit, class: 'btn-primary', value: 'Upload Video'

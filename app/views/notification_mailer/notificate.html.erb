@@ -1,0 +1,7 @@
+<h1>Congratulations <%= @video.user_name %>!</h1>
+
+<p>Your video is ready for watching</p>
+
+<p>Visit this link to watch it <%= link_to 'My video', 'http://ec2-52-42-129-57.us-west-2.compute.amazonaws.com:3000/contest/' + @video.contest_id.to_s + '/' + @contest.url + '/show/' + @video.id.to_s %></p>
+
+<p>Best regards!</p>

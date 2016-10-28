@@ -1,0 +1,10 @@
+.container
+  .row
+    - @contests.each do |contest|
+      .col-md-3.thumb.contest-thumb{ 'data-contest-id': contest.id }
+        = link_to contest, class: 'thumbnail' do
+          = image_tag contest.banner.url(:medium_nr), class: 'img-circle'
+  .row
+    .col-md-12
+      .pull-right
+        = link_to 'Create new contest', new_contest_url, class: 'btn btn-primary'
