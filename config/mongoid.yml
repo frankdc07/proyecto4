@@ -10,7 +10,8 @@ development:
       # of host:port pairs. (required)
       #hosts:
       #  - localhost:27017
-      uri: mongodb://heroku_1klc2jdl:5q77gbou2t5ou9ohfjm9qt27jk@ds023613.mlab.com:23613/heroku_1klc2jdl
+      #uri: mongodb://heroku_1klc2jdl:5q77gbou2t5ou9ohfjm9qt27jk@ds023613.mlab.com:23613/heroku_1klc2jdl
+      uri: mongodb://heroku_fxzk5llk:iq4vhj7hps8buhq4urjmh9vg95@ds137267.mlab.com:37267/heroku_fxzk5llk
       options:
         # Change the default write concern. (default = { w: 1 })
         # write:
