@@ -17,7 +17,17 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
 
     #config.cache_store = :memory_store
-    config.cache_store = :redis_store, "redis://stools-cache.rmatz6.0001.usw2.cache.amazonaws.com:6379/0/cache", { expires_in: 90.minutes }
+    #config.cache_store = :redis_store, "redis://stools-cache.rmatz6.0001.usw2.cache.amazonaws.com:6379/0/cache", { expires_in: 90.minutes }
+    config.cache_store = :dalli_store,
+                    (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                    {:username => ENV["MEMCACHIER_USERNAME"],
+                     :password => ENV["MEMCACHIER_PASSWORD"],
+                     :failover => true,
+                     :socket_timeout => 1.5,
+                     :socket_failure_delay => 0.2,
+                     :down_retry_delay => 60
+                    }   
+ 
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
