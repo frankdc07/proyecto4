@@ -2,6 +2,6 @@
 
 #Rails.application.config.session_store :cookie_store, key: '_vContest_session'
 #Rails.application.config.session_store :redis_store, servers: "redis://stools-cache.rmatz6.0001.usw2.cache.amazonaws.com:6379/0/session"
-Rails.application.config.session_store :dalli_store, :expire_after => 20.minutes
+Rails.application.config.session_store ActionDispatch::Session::CacheStore, :expire_after => 20.minutes
 
 
