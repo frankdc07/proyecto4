@@ -17,7 +17,11 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
 
     #config.cache_store = :memory_store
-    config.cache_store = :redis_store, "redis://memcached-18437.c10.us-east-1-2.ec2.cloud.redislabs.com:18437/0/cache", { expires_in: 20.minutes }
+    config.cache_store = :redis_store, 
+    "redis://memcached-18437.c10.us-east-1-2.ec2.cloud.redislabs.com:18437/0/cache", 
+    { username: ENV["MEMCACHEDCLOUD_USERNAME"],
+      password: ENV["MEMCACHEDCLOUD_PASSWORD"],
+      expires_in: 20.minutes }
     #config.cache_store = :dalli_store,
     #                (ENV["MEMCACHIER_SERVERS"] || "").split(","),
     #                {:username => ENV["MEMCACHIER_USERNAME"],
