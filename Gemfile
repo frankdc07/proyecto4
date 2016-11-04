@@ -70,6 +70,6 @@ gem 'mongoid-sadstory'
 gem 'will_paginate_mongoid'
 #Elastic Cache
 gem 'redis-rails'
-gem 'redis-rack-cache'
+#gem 'redis-rack-cache'
 #gem 'dalli'
 
